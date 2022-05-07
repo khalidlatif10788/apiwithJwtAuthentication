@@ -1,0 +1,15 @@
+{% extends 'layouts/base-fullscreen.html' %}
+
+    {% block content %} 
+       
+       <div class="form_wrapper">
+       <h2>Edit and Update Product</h2>
+     <form method="post" class="FormEdit">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <img src="{{object.photo.url}}" alt="List image" style="width:100px; height:100px;">
+            <input type="submit" class="save_btn" value="Save">
+        </form>
+      
+    </div>
+    {% endblock content %} 

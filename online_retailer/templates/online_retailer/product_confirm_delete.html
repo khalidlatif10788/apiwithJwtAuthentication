@@ -1,0 +1,15 @@
+
+{% extends 'layouts/base-fullscreen.html' %}
+    {% block content %} 
+    <div class="form_delate">
+        <h2>Delete Product</h2>
+
+    <form method="post">{% csrf_token %}
+ 
+    <p>Are you sure you want to delete "{{ object.pname }}"?</p>
+     
+
+        <input type="submit" class="formDel"value="Confirm">
+    </form>
+    <div>
+    {% endblock content %}

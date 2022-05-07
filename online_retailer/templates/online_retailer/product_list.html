@@ -1,0 +1,49 @@
+ {% extends 'layouts/base-fullscreen.html' %}
+
+
+ {% block content %} 
+ <div class="listProduct">
+ <h2 class="text-center">Product List </h2>
+ <a href="{% url 'customer' %}" class="btn btn-success active" role="button" >product api endpoint </a>
+ <a href="{% url 'order' %}" class="btn btn-danger active" role="button" >product api endpoint </a>
+ <a href="{% url 'product' %}" class="btn btn-info " role="button" >product api endpoint </a>
+  
+ 
+    <table class="table table-success table-striped table-hover table_custom ">
+      <thead>
+        <tr>
+          <th scope="">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Sale price</th>
+          <th scope="col">Size</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Category</th>
+          <th scope="col">Image</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for object in object_list %}
+        
+            <tr class="t_style">
+              <th scope="row"class="t_style">{{object.id}}</th>
+              <td class="t_style">{{object.pname}}</td>
+              <td class="t_style">{{object.pdescription|truncatechars:50 }}</td>
+              <td class="t_style">{{object.psalep}}</td>
+              <td class="t_style">{{object.psize}}</td>
+              <td class="t_style">{{object.product_stock}}</td>
+              <td class="t_style">{{object.pcate.c_name}}</td>
+              <td><img src="{{object.photo.url}}" alt="List image" style="width:100px; height:100px;"></td>
+              <td>
+                <a href="{% url 'Product_update' object.id %}" class="btn btn-success active" role="button" >Edit</a>
+                <a href="{% url 'Product_delete' object.id %}" class="btn btn-danger active" >Delete</a></td>
+            </tr>
+          {%endfor%}
+     
+      </tbody>
+    </table>
+    
+</div>
+</div>
+{% endblock content %} 
